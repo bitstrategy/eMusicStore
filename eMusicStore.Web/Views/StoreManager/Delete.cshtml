@@ -1,0 +1,17 @@
+﻿@model eMusicStore.Web.Models.Album
+
+@{
+    ViewBag.Title = "删除专辑";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>你确定要删除该专辑吗?<strong>@Model.Title</strong></h3>
+<div>
+    @using (Html.BeginForm()) {
+        <div class="form-actions no-color">
+            <input type="submit" value="删除" class="btn btn-danger" /> 
+            @Html.ActionLink("返回列表", "Index", null, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

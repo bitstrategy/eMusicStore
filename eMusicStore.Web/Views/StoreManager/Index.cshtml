@@ -1,0 +1,51 @@
+﻿@model IEnumerable<eMusicStore.Web.Models.Album>
+
+@{
+    ViewBag.Title = "专辑浏览";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("新建专辑", "Create", null, new { @class = "btn btn-default" })
+</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Artist.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>操作</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Artist.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("编辑", "Edit", new { id=item.AlbumId }, new { @class = "btn btn-primary" }) 
+            @Html.ActionLink("详情", "Details", new { id=item.AlbumId }, new { @class = "btn btn-primary" }) 
+            @Html.ActionLink("删除", "Delete", new { id=item.AlbumId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<eMusicStore.Web.Models.Genre>
+@{
+    ViewBag.Title = "首页";
+}
+
+<h2>所有流派</h2>
+<h3>一共有：@Model.Count() 个流派</h3>
+<ul>
+    @foreach (var genre in Model)
+    {
+        <li>@genre.Name</li>
+    }
+</ul>
+
