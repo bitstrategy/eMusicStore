@@ -1,0 +1,29 @@
+﻿@model eMusicStore.Web.Models.Album
+@{
+    ViewBag.Title = "专辑详情";
+}
+
+<div>
+    <h2>
+        @Html.DisplayFor(model => model.Title)
+    </h2>
+    <img src="@Model.AlbumArtUrl" alt="@Model.Title" />
+    <br />
+    <strong>
+        @Html.DisplayNameFor(model => model.Artist.Name)：
+    </strong>
+    @Html.DisplayFor(model => model.Artist.Name)
+    <br />
+    <strong>
+        @Html.DisplayNameFor(model => model.Genre.Name)：
+    </strong>
+    @Html.DisplayFor(model => model.Genre.Name)
+    <br />
+    <strong>
+        @Html.DisplayNameFor(model => model.Price)：
+    </strong>
+    @Html.DisplayFor(model => model.Price)
+    <br /><br />
+    @Html.ActionLink("添加到购物车", "AddToCart", "ShoppingCart", new { id = Model.AlbumId }, new { @class = "btn btn-primary" })
+</div>
+

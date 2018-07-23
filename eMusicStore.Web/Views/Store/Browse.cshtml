@@ -1,0 +1,13 @@
+﻿@model IEnumerable<eMusicStore.Web.Models.Album>
+
+@{
+    ViewBag.Title = "浏览专辑";
+}
+
+<h2>正在浏览流派：@ViewBag.Genre</h2>
+<ul>
+    @foreach (var album in Model)
+    {
+        <li>@Html.ActionLink(album.Title, "Details", new { id = album.AlbumId })</li>
+    }
+</ul>
