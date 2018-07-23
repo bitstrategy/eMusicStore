@@ -1,0 +1,48 @@
+﻿@model eMusicStore.Web.Models.LogOnModel
+
+@{
+    Layout = null;
+    ViewBag.Title = "登录";
+}
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - e音乐商店</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    @Styles.Render("~/Content/bscss")
+    @Styles.Render("~/Content/signin")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <div class="container">
+        @using (Html.BeginForm("LogOn", "Account", FormMethod.Post, new { @class = "form-signin" }))
+        {
+            <p>
+                如果没有可以点击 @Html.ActionLink("这里", "Register") 注册.
+            </p>
+            @Html.Hidden("ReturnUrl", Request.QueryString["ReturnUrl"])
+            <h2 class="form-signin-heading">欢迎登录</h2>
+            <label for="username" class="sr-only">登录账户</label>
+            <input type="text" id="UserName" name="UserName" class="form-control" placeholder="登录账户" required autofocus />
+            <label for="password" class="sr-only">登录密码</label>
+            <input type="password" id="Password" name="Password" class="form-control" placeholder="登录密码" required />
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me" name="RememberMe">记住我
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+
+            @Html.ValidationSummary(true, "登录失败，请按照错误提示纠正后重试。", new { @class = "text-danger" })
+        }
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

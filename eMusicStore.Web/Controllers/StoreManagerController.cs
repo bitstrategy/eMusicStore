@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace eMusicStore.Web.Controllers
 {
+    [Authorize(Roles = "admins")]
     public class StoreManagerController : Controller
     {
         private MusicStoreEntities _storeDB = new MusicStoreEntities();

@@ -54,11 +54,11 @@ namespace eMusicStore.Web.Models
         /// 所属流派
         /// </summary>
         [DisplayName("所属流派")]
-        public Genre Genre { get; set; }
+        public virtual Genre Genre { get; set; }
         /// <summary>
         /// 所属艺术家
         /// </summary>
         [DisplayName("所属艺术家")]
-        public Artist Artist { get; set; }
+        public virtual Artist Artist { get; set; }
     }
 }
