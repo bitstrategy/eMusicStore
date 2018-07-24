@@ -4,11 +4,5 @@
 }
 
 <h2>@ViewBag.Title</h2>
-<h4>一共有 @Model.Count() 流派</h4>
-<ul>
-    @foreach (var genre in Model)
-    {
-        <li>@Html.ActionLink(genre.Name, "Browse", new { genre = genre.Name })</li>
-    }
-</ul>
+<h3>点击左侧选择相应的流派浏览专辑</h3>
 

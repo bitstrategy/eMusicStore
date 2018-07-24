@@ -1,14 +1,24 @@
-﻿@model IEnumerable<eMusicStore.Web.Models.Genre>
+﻿@model IEnumerable<eMusicStore.Web.Models.Album>
 @{
     ViewBag.Title = "首页";
 }
 
-<h2>所有流派</h2>
-<h3>一共有：@Model.Count() 个流派</h3>
-<ul>
-    @foreach (var genre in Model)
-    {
-        <li>@genre.Name</li>
-    }
-</ul>
-
+<div class="container text-center">
+    <img alt="首页" src="~/Content/Images/home-showcase.png" />
+</div>
+<div class="col-md-12">
+    <h3>热门专辑推荐</h3>
+    <table class="table">
+        <tr>
+            @foreach (var album in Model)
+            {
+                <td>
+                    <a href="@Url.Action("Details", "Store", new { id = album.AlbumId })">
+                        <img alt="@album.Title" src="@album.AlbumArtUrl" /><br />
+                        <span>@album.Title</span>
+                    </a>
+                </td>
+            }
+        </tr>
+    </table>
+</div>

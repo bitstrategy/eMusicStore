@@ -14,8 +14,15 @@ namespace eMusicStore.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var genres = _storeDB.Genres.ToList();
-            return View(genres);
+            //var genres = _storeDB.Genres.ToList();
+            //return View(genres);
+            var albums = GetTopSellingAlbums(5);
+            return View(albums);
+        }
+
+        private List<Album> GetTopSellingAlbums(int count)
+        {
+            return _storeDB.Albums.OrderByDescending(a => a.OrderDetails.Count()).Take(count).ToList();
         }
     }
 }

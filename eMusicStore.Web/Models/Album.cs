@@ -60,5 +60,7 @@ namespace eMusicStore.Web.Models
         /// </summary>
         [DisplayName("所属艺术家")]
         public virtual Artist Artist { get; set; }
+
+        public virtual List<OrderDetail> OrderDetails { get; set; }
     }
 }

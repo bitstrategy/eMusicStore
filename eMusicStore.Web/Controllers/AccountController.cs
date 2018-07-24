@@ -7,7 +7,12 @@ namespace eMusicStore.Web.Controllers
 {
     public class AccountController : Controller
     {
-
+        private void MigrateShoppingCart(string userName)
+        {
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+            cart.MigrateCart(userName);
+            Session[ShoppingCart.CartSessionKey] = userName;
+        }
         //
         // GET: /Account/LogOn
 
@@ -26,6 +31,7 @@ namespace eMusicStore.Web.Controllers
             {
                 if (Membership.ValidateUser(model.UserName, model.Password))
                 {
+                    MigrateShoppingCart(model.UserName);
                     FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/", StringComparison.Ordinal)
                         && !returnUrl.StartsWith("//", StringComparison.Ordinal) && !returnUrl.StartsWith("/\\", StringComparison.Ordinal))
@@ -78,6 +84,7 @@ namespace eMusicStore.Web.Controllers
                 Membership.CreateUser(model.UserName, model.Password, model.Email, "question", "answer", true, null, out createStatus);
                 if (createStatus == MembershipCreateStatus.Success)
                 {
+                    MigrateShoppingCart(model.UserName);
                     FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
                     return RedirectToAction("Index", "Home");
                 }

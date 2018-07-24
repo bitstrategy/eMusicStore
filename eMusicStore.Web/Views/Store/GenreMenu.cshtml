@@ -1,0 +1,8 @@
+﻿@model IEnumerable<eMusicStore.Web.Models.Genre>
+
+<ul class="col-md-1 col-md-offset-1">
+    @foreach (var genre in Model)
+    {
+        <li>@Html.ActionLink(genre.Name, "Browse", "Store", new { genre = genre.Name }, null)</li>
+    }
+</ul>

@@ -29,5 +29,12 @@ namespace eMusicStore.Web.Controllers
             var album = _storeDB.Albums.Find(id);
             return View(album);
         }
+
+        [ChildActionOnly]
+        public ActionResult GenreMenu()
+        {
+            var genres = _storeDB.Genres.ToList();
+            return PartialView(genres);
+        }
     }
 }

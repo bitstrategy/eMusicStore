@@ -17,7 +17,7 @@ function (data) {
     }
     $('#cart-total').text(data.CartTotal);
     $('#update-message').text(data.Message);
-    $('#cart-status').text('Cart (' + data.CartCount + ')');
+    $('#cart-status').text('购物车(' + data.CartCount + ')');
 });
         }
     });
