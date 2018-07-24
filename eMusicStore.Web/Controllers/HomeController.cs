@@ -20,6 +20,11 @@ namespace eMusicStore.Web.Controllers
             return View(albums);
         }
 
+        public ActionResult Test()
+        {
+            return View("Error");
+        }
+
         private List<Album> GetTopSellingAlbums(int count)
         {
             return _storeDB.Albums.OrderByDescending(a => a.OrderDetails.Count()).Take(count).ToList();

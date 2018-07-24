@@ -32,7 +32,7 @@
             <input type="password" id="Password" name="Password" class="form-control" placeholder="登录密码" required />
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" value="remember-me" name="RememberMe">记住我
+                    <input type="checkbox" id="RememberMe" value="true" name="RememberMe">记住我
                 </label>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
@@ -44,5 +44,14 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
+    <script>
+        $(function () {
+            $("#RememberMe").change(function () {
+                console.log($("#RememberMe").prop('checked'));
+                $("#RememberMe").val($("#RememberMe").prop('checked'));
+            })
+        })
+    </script>
 </body>
 </html>

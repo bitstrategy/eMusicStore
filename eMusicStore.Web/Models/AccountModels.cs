@@ -5,20 +5,20 @@ namespace eMusicStore.Web.Models
 
     public class ChangePasswordModel
     {
-        [Required]
+        [Required(ErrorMessage = "{0}是必填项")]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(Name = "旧密码")]
         public string OldPassword { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "{0}是必填项")]
+        [StringLength(100, ErrorMessage = "{0}字符长度最少{2}", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "新密码")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "确认新密码")]
+        [Compare("NewPassword", ErrorMessage = "新密码和确认新密码不一致.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -39,24 +39,24 @@ namespace eMusicStore.Web.Models
 
     public class RegisterModel
     {
-        [Required]
-        [Display(Name = "User name")]
+        [Required(ErrorMessage = "{0}是必填项")]
+        [Display(Name = "登录账户")]
         public string UserName { get; set; }
 
-        [Required]
-        [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email address")]
+        [Required(ErrorMessage = "{0}是必填项")]
+        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "{0}格式不正确")]
+        [Display(Name = "邮箱")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "{0}是必填项")]
+        [StringLength(100, ErrorMessage = "{0}字符长度最少{2}", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "登录密码")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "确认密码")]
+        [Compare("Password", ErrorMessage = "登录密码和确认密码不一致.")]
         public string ConfirmPassword { get; set; }
     }
 }
